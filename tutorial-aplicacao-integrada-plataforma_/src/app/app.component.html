@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="col-md-12 text-center">
+      <h1>Tutorial de aplicação integrada à plataforma</h1>
+    </div>
+  
+    <div class="col-8 offset-2">
+      <div class="card">
+        <div class="card-header">
+          <div class="float-left">
+            <h4>Dados do usuário autenticado</h4>
+          </div>
+          <div class="float-right">
+            <button (click)="getDadosUsuario()" class="btn btn-primary">Atualizar dados</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <table class="table table-sm col-8 offset-2">
+              <tbody>
+                <tr>
+                  <td>Nome</td>
+                  <td>{{dadosUsuario.nome}}</td>
+                </tr>
+                <tr>
+                  <td>Nome Completo</td>
+                  <td>{{dadosUsuario.nomeCompleto}}</td>
+                </tr>
+                <tr>
+                  <td>Descricao:</td>
+                  <td>{{dadosUsuario.descricao}}</td>
+                </tr>
+                <tr>
+                  <td>Email:</td>
+                  <td>{{dadosUsuario.email}}</td>
+                </tr>
+                <tr>
+                  <td>Domínio do tenant:</td>
+                  <td>{{dadosUsuario.tenantDomain}}</td>
+                </tr>
+                <tr>
+                  <td>Nome do tenant:</td>
+                  <td>{{dadosUsuario.tenantName}}</td>
+                </tr>
+                <tr>
+                  <td>Locale do tenant:</td>
+                  <td>{{dadosUsuario.tenantLocale}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

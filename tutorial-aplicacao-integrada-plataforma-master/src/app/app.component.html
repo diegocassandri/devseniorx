@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="col-md-12 text-center">
+    <h1>Tutorial de aplicação integrada à plataforma</h1>
+  </div>
+
+  <div class="col-8 offset-2">
+    <div class="card">
+      <div class="card-header">
+        <div class="float-left">
+          <h4>Dados do usuário autenticado</h4>
+        </div>
+        <div class="float-right">
+          <button (click)="getDadosUsuario()" class="btn btn-primary">Atualizar dados</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <table class="table table-sm col-8 offset-2">
+            <tbody>
+              <tr>
+                <td>Nome</td>
+                <td>{{dadosUsuario.nome}}</td>
+              </tr>
+              <tr>
+                <td>Nome Completo</td>
+                <td>{{dadosUsuario.nomeCompleto}}</td>
+              </tr>
+              <tr>
+                <td>Descricao:</td>
+                <td>{{dadosUsuario.descricao}}</td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td>{{dadosUsuario.email}}</td>
+              </tr>
+              <tr>
+                <td>Domínio do tenant:</td>
+                <td>{{dadosUsuario.tenantDomain}}</td>
+              </tr>
+              <tr>
+                <td>Nome do tenant:</td>
+                <td>{{dadosUsuario.tenantName}}</td>
+              </tr>
+              <tr>
+                <td>Locale do tenant:</td>
+                <td>{{dadosUsuario.tenantLocale}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-2">
+      <div class="card-header">
+        <div class="float-left">
+          <h4>Usuários cadastrados</h4>
+        </div>
+        <div class="float-right">
+          <button (click)="getUsuarios()" class="btn btn-primary">Atualizar dados</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover table-bordered" [hidden]="listaUsuarios.length == 0">
+          <thead>
+            <tr>
+              <th scope="col">Login</th>
+              <th scope="col">Nome completo</th>
+              <th scope="col">E-mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let usuario of listaUsuarios; trackBy: index;'>
+              <td>{{usuario.nome}}</td>
+              <td>{{usuario.nomeCompleto}}</td>
+              <td>{{usuario.email}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card mt-2">
+      <div class="card-header">
+        <div class="float-left">
+          <h4>Envio de notificações</h4>
+        </div>
+        <div class="float-right">
+          <button (click)="getUsuarios()" class="btn btn-primary">Atualizar lista de usuários</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="usuario">Usuário</label>
+            <select class="form-control" id="usuario" name="usuario" [(ngModel)]="selectedUser">
+              <option *ngFor="let usuario of listaUsuarios" [ngValue]="usuario">{{usuario.nome}} - {{usuario.email}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tituloNotificacao">Título da notificação</label>
+            <input type="text" class="form-control" id="tituloNotificacao" name="tituloNotificacao" placeholder="Título" [(ngModel)]="subjectNotification">
+          </div>
+          <div class="form-group">
+            <label for="mensagemNotificao">Mensagem da notificação</label>
+            <textarea class="form-control" id="mensagemNotificao" name="mensagemNotificao" placeholder="Mensagem" rows="3" [(ngModel)]="contentNotification"></textarea>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="sendNotification()" [attr.disabled]="selectedUser ? null : ''">Enviar
+            notificação
+          </button>
+          <p class="mt-2">{{sendedNotification}}</p>
+        </form>
+      </div>
+    </div>
+
+    <div class="card mt-2">
+      <div class="card-header">
+        <h4>Upload de arquivos</h4>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <input type="file" (change)="fileChange($event)" placeholder="Upload file">
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="sendFile()" [attr.disabled]="selectedFile ? null : ''">Enviar
+              arquivo
+            </button>
+            <a class="ml-2" target="_blank" [attr.href]="downloadUrl"><button type="button" class="btn btn-primary" [attr.disabled]="downloadUrl ? null : ''">Baixar
+                arquivo
+              </button></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

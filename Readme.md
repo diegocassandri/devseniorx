@@ -1,0 +1,1 @@
+Repositório de treinamento de customizações na Plataforma Senior X

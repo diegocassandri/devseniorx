@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@seniorsistemas/angular-components": "^12.3.1",
+    "@seniorsistemas/primeng-theme": "^7.1.0",
     "@seniorsistemas/senior-platform-data": "^2.0.4",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
